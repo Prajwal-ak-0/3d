@@ -4,6 +4,8 @@ import { Suspense } from "react"
 import Loader from "../components/Loader"
 import { Island } from "../models/Island"
 import Sky from "../models/Sky"
+import Bird from "../models/Bird"
+import Plane from "../models/Plane"
 
 const Home = () => {
     const adjustIslandForScreenSize = () => {
@@ -39,12 +41,16 @@ const Home = () => {
                 {/* <pointLight/> // LIGHT THAT COMES FROM A SINGLE POINT IN ALL DIRECTIONS, HERE IT IS NOT REQ BCZ WE ARE OUT TO SUNLIGHT*/}
                 {/* <spotLight/> // LIGHT THAT COMES FROM A SINGLE POINT IN A SINGLE DIRECTION(IN THE SHAPE OF CONE), NOT REQ HERE. */}
                 <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1} /> // LIGHT THAT COMES FROM THE SK, ADDS A GRADIENT COLOR TO THE OBJECTS IN THE SCENE
+                
+                <Bird/>
                 <Sky/>
                 <Island
                     scale={islandScale}
                     position={islandPosition}
                     rotation={islandRotation}
                 />
+                <Plane/>
+
             </Suspense>
         </Canvas>
     </section>
