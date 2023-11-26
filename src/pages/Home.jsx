@@ -62,14 +62,15 @@ const Home = () => {
                 <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1} /> // LIGHT THAT COMES FROM THE SK, ADDS A GRADIENT COLOR TO THE OBJECTS IN THE SCENE
                 
                 <Bird/>
-                <Sky/>
+                <Sky
+                    isRotating={isRotating}
+                />
                 <Island
                     scale={islandScale}
                     position={islandPosition}
                     rotation={islandRotation}
                     setIsRotating={setIsRotating}
                     isRotating={isRotating}
-                    currentStage={currentStage}
                     setCurrentStage={setCurrentStage}
                 />
                 <Plane
