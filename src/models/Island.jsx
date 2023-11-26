@@ -22,13 +22,17 @@ export function Island({
   setIsRotating,
   setCurrentStage,
   currentFocusPoint,
+  currentStage,
+  setCurrentStage,
   ...props
 }) {
   const islandRef = useRef();
   // Get access to the Three.js renderer and viewport
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(islandScene);
-
+  // nodes contains all the meshes in the model (part of islandScene) as separate objects. 
+  // materials contains all the materials used in the model (such as colors  ) as separate objects.
+  
   // Use a ref for the last mouse x position
   const lastX = useRef(0);
   // Use a ref for rotation speed
