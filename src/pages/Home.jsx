@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 import Loader from "../components/Loader"
 import { Island } from "../models/Island"
+import Sky from "../models/Sky"
 
 const Home = () => {
     const adjustIslandForScreenSize = () => {
@@ -33,11 +34,12 @@ const Home = () => {
             camera={{near:0.1, far:1000}}
         >
             <Suspense fallback={<Loader/>}>
-                <directionalLight/>
-                <ambientLight/>
-                <pointLight/>
-                <spotLight/>
-                <hemisphereLight/>
+                <directionalLight position={[1,1,1]} intensity={1}/>  //CONTROLS THE SUNLIGHT
+                <ambientLight intensity={0.1}/> // MAKES ALL THE OBJECT IN THE SCENE BRIGHTER WITHOUT SHADOWS
+                {/* <pointLight/> // LIGHT THAT COMES FROM A SINGLE POINT IN ALL DIRECTIONS, HERE IT IS NOT REQ BCZ WE ARE OUT TO SUNLIGHT*/}
+                {/* <spotLight/> // LIGHT THAT COMES FROM A SINGLE POINT IN A SINGLE DIRECTION(IN THE SHAPE OF CONE), NOT REQ HERE. */}
+                <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1} /> // LIGHT THAT COMES FROM THE SK, ADDS A GRADIENT COLOR TO THE OBJECTS IN THE SCENE
+                <Sky/>
                 <Island
                     scale={islandScale}
                     position={islandPosition}
